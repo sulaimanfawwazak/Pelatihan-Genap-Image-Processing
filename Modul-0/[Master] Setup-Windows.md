@@ -1,0 +1,99 @@
+# **[Windows] Setup | Pelatihan Genap 2025: Image Processing**
+
+## **NOTE!!!**
+- I highly encourage you to use Linux and get familiar with it. Even if you're using Windows, you'll install WSL (Windows Subsystem for Linux) to get a similar workflow as Linux.
+- If you have questions, feel free to ask in the WhatsApp group chat or Microsoft Teams.
+
+</br>
+
+## **Windows Setup**
+-  **Installing WSL (Windows Subsystem for Linux)**
+	1. Open PowerShell or Command Prompt as Adminitrator and run: </br>
+	```wsl --install```
+	2. Restart your computer if needed
+	3. Check the installation </br>
+	```wsl --list --verbose```
+	4. Install the Ubuntu 22.04 </br>
+	```wsl --install -d Ubuntu-22.04```
+	5. Seach and open Ubuntu WSL on the Start button
+
+</br>
+
+-  **Installing Miniconda**
+	1. Open the Ubuntu WSL
+	2. Create the necessary directories </br>
+	```mkdir -p ~/Downloads ~/Documents ~/Pictures ~/Videos ~/Music ~/Desktop```
+	3. Download the Miniconda Installer (NOTE: THIS IS ONE COMMAND)</br>
+	```curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/Downloads/Miniconda3-latest-Linux-x86_64.sh```
+	4. Run the installer </br>
+	```bash ~/Downloads/Miniconda3-latest-Linux-x86_64.sh```
+	5. Follow the installation instructions
+	6. Initialize Miniconda </br>
+	```source ~/.bashrc``` </br>
+	or </br>
+	```conda activate base``` </br>
+	| **Side note**: `base` is the default environment, made by the Miniconda
+	7. Check the installation result </br>
+	```conda --version```
+	8. Download the environment file </br>
+	```wget -P ~/Downloads https://raw.githubusercontent.com/sulaimanfawwazak/Pelatihan-Vision-2025/main/environment.yml```
+	9. Create the environment </br>
+	```conda env create --name imageproc -f ~/Downloads/environment.yml```
+	10. Activate the environment </br>
+	```conda activate imageproc```
+
+</br>
+
+-  **Setting Up Jupyter Notebook**
+	1. Open the Ubuntu WSL
+	2. Activate the environment </br>
+	```conda activate imageproc```
+	3. Install Jupyter </br>
+	```conda install -y jupyter```
+	4. Install Conda Integration </br>
+	```conda install -c conda-forge nb_conda```
+	5. Install OpenCV </br>
+	```conda install -c conda-forge opencv```
+	6. Setup the Jupyter Kernel </br>
+	```python -m ipykernel install --user --name viscon --display-name "Python (Image Processing)"```
+	7. Run Jupyter Notebook </br>
+	```mkdir pelatihan-genap``` </br>
+  ```cd pelatihan-genap``` </br>
+  ```jupyter notebook```
+
+</br>
+
+-  **Installing Visual Studio Code (VS Code)**
+	1. Download the `.exe` file from https://code.visualstudio.com/
+	2. Click twice on the downloaded file to start the installation
+	3. Open the VS Code
+	4. Open the extension menu
+	5. Install these extensions:
+		- Jupyter
+		- Jupyter Keymap
+		- Jupyter Notebook Renderes
+		- Jupter Cell Tags
+		- Jupyter Slide Show
+
+</br>
+
+-  **Additional Setup**
+	1. Open the Ubuntu WSL
+	2. Install these additional packages </br>
+	```sudo apt install python-is-python3``` </br>
+	```sudo apt install python3-pip``` 
+	3. Deactivate the `base` environment by default when opening Terminal</br>
+	```conda config --set auto_activate_base false```
+	4. Create aliases to shorten the commands </br>
+	```echo "alias ca="conda activate" >> ~/.bashrc``` </br>
+	```echo "alias fixopenssl=\"export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH\"" >> ~/.bashrc```
+	
+</br>
+
+## **Resources**
+- [https://github.com/jeffheaton/t81_558_deep_learning/blob/master/install/manual_setup3.ipynb](https://github.com/jeffheaton/t81_558_deep_learning/blob/master/install/manual_setup3.ipynb)
+- [https://www.youtube.com/watch?v=eId6K8d0v6o&pp=ygUgaG93IHRvIGluc3RhbGwgd3NsIG9uIHdpbmRvd3MgMTE%3D](https://www.youtube.com/watch?v=eId6K8d0v6o&pp=ygUgaG93IHRvIGluc3RhbGwgd3NsIG9uIHdpbmRvd3MgMTE%3D)
+
+</br>
+
+-S. Fawwaz A. K
